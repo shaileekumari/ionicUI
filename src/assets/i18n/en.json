@@ -13,6 +13,9 @@
     "PROFILE":"Profile",
     "CLAIMS":"Insurance Claims",
     "FORGOT PASSWORD":"Forgot Password",
-    "DETAILS":"Personal Details"
+    "DETAILS":"Personal Details",
+    "LOGOUT":"Logout",
+    "FARMS":"Farms"
+
  
 }
