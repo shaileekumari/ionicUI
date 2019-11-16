@@ -7,6 +7,7 @@
     "CONFIRM PASSWORD":"Confirm Password",
     "FARMER":"Farmer",
     "ROLE":"Role",
+    "PHONENO":"Phone number",
     "CREATE YOUR ACCOUNT":"Create Your Account",
     "VERIFICATION OFFICER":"Verification Officer",
     "DASHBOARD":"Dashboard",
@@ -15,7 +16,7 @@
     "FORGOT PASSWORD":"Forgot Password",
     "DETAILS":"Personal Details",
     "LOGOUT":"Logout",
-    "FARMS":"Farms"
-
+    "FARM":"Farm",
+    "COORDINATES":"Farm Coordinates"
  
 }
