@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  private currentColor: string
+  constructor() { 
+    this.currentColor = 'light';
+  }
+
+
+  changeToDarkColor() {
+    this.currentColor = 'dark';
+} 
+
   farmer={
     name:'A',
     email:'abc@gmail.com',

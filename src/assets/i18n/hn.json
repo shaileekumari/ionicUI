@@ -5,7 +5,6 @@
     "PASSWORD":"पासवर्ड",
     "EMAIL":"ईमेल",
     "PHONENO":"फ़ोन नंबर",
-    
     "CONFIRM PASSWORD":"पासवर्ड की पुष्टि कीजिये",
     "FARMER":"किसान",
     "ROLE":"भूमिका",
@@ -18,7 +17,8 @@
     "DETAILS":"व्यक्तिगत विवरण",
     "LOGOUT":"लॉग आउट",
     "FARM":"खेत",
-    "COORDINATES":"खेत का समन्वय"
+    "COORDINATES":"खेत का समन्वय",
+    "CHANGE COLOR":"रंग बदलें"
     
  
  

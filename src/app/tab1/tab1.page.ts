@@ -28,4 +28,5 @@ export class Tab1Page {
   languageChanged(){
     this.translateConfigService.setLanguage(this.selectedLanguage);
   }
+  
 }

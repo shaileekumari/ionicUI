@@ -1,6 +1,14 @@
 <ion-header>
-  <ion-toolbar color='primary'>
-    <ion-title>claims</ion-title>
+  <ion-toolbar [color]="currentColor">
+    <ion-title >Claims</ion-title>
+    <ion-buttons slot="primary"> 
+      Change Color :
+      <ion-select placeholder="Change Color" [(ngModel)]='currentColor' name="currentColor">
+
+
+          <ion-select-option *ngFor="let colors  of colrsKey" [value]='colrsValues[colors]'>{{colors}}</ion-select-option>
+
+        </ion-select></ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +37,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Input</ion-label>
-          <ion-input></ion-input>
+          <ion-input type="file"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Toggle</ion-label>
