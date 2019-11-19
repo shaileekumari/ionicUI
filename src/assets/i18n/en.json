@@ -18,5 +18,8 @@
     "LOGOUT":"Logout",
     "FARM":"Farm",
     "COORDINATES":"Farm Coordinates",
-    "CHANGE COLOR":"Change Color"
+    "CHANGE COLOR":"Change Color",
+    "LONGITUDE":"Longitude",
+    "LATITUDE":"Latitude",
+    "ADDRESS":"Address"
 }

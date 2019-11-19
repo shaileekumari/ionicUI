@@ -18,12 +18,17 @@
             <br>
             <ion-item>
                 
+                <ion-input  name="email" type="email" placeholder="your@email.com" ngModel ></ion-input>
+              </ion-item>
+              <br>
+            <ion-item>
+                
               <ion-input  name="phoneno" type="number" placeholder="{{ 'PHONENO' | translate }}" ngModel required></ion-input>
             </ion-item>
             <br>
             <ion-item>
               
-              <ion-input name="email" type="email" placeholder="your@email.com" ngModel></ion-input>
+              <ion-input name="address" type="text" placeholder="{{'ADDRESS'| translate}}" ngModel></ion-input>
             </ion-item>
             <br>
             <ion-item>
@@ -32,17 +37,14 @@
             </ion-item>
             <br>
             <ion-item>
-                
-              <ion-input name="confirm" type="password" placeholder="{{ 'CONFIRM PASSWORD' | translate }}" ngModel required></ion-input>
-            </ion-item>
+              <!-- <ion-label color='medium'>{{ 'ROLE' | translate }}</ion-label> -->
+               <ion-select placeholder="{{ 'ROLE' | translate }}" ngModel name="role">
+                 <ion-select-option value="farmer">{{ 'FARMER' | translate }}</ion-select-option>
+                 <ion-select-option value="verificationOfficer">{{ 'VERIFICATION OFFICER' | translate }}</ion-select-option>
+               </ion-select>
+             </ion-item>
             <br>
-            <ion-item>
-               
-                <ion-select placeholder="{{ 'ROLE' | translate }}" ngModel name="role">
-                  <ion-select-option value="farmer">{{ 'FARMER' | translate }}</ion-select-option>
-                  <ion-select-option value="verificationOfficer">{{ 'VERIFICATION OFFICER' | translate }}</ion-select-option>
-                </ion-select>
-              </ion-item>
+          
           </div>
           <div class="ion-padding">
             <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">{{ 'REGISTER' | translate }}</ion-button>

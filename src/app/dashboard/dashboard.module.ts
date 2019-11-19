@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     RouterModule.forChild([{ path: '', component: DashboardPage }]),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
   declarations: [DashboardPage]
 })

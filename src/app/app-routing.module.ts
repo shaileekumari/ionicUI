@@ -13,8 +13,7 @@ const routes: Routes = [
   {
     path: 'verify-officer',
     loadChildren: () => import('./verify-officer/verify-officer.module').then( m => m.VerifyOfficerPageModule)
-  },
-
+  }
 
  
 

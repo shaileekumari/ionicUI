@@ -1,21 +1,144 @@
+<div *ngIf="!display">
+    <ion-toolbar>
+        <ion-title> Farmer Dashboard</ion-title>
+      </ion-toolbar>
+</div>
+
 <ion-content>
+ 
+   
+<div *ngIf="!display">
+    <ion-card *ngFor="let policy of policydata" (click)='openCard(policy)'>
+        <ion-card-header>
   
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
+                <ion-row>
+                  <ion-col size-md="6"> <ion-card-subtitle color='dark' >Policy Id: {{policy.policy_id}}</ion-card-subtitle></ion-col>
+                  <ion-col size-md="6"  text-right> <ion-card-subtitle color='dark' >Status: {{policy.status}}</ion-card-subtitle></ion-col>
+                  </ion-row>
   
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-item>
-      <ion-icon name="pin" slot="start"></ion-icon>
-      <ion-label>ion-item in a card, icon left, button right</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-  </ion-card>
+  
+           
+           
+            
+        </ion-card-header>
+      
+      <ion-card-content>
+        
+              <ion-row>
+                <ion-col size-md="7">Start date: {{policy.start_date}}</ion-col>
+                <ion-col size-md="5" text-right>End date: {{policy.expiry_dates}}</ion-col>
+  
+                </ion-row>
+               
+  
+                 
+        
+          </ion-card-content>
+    </ion-card>
+</div>
+
+<div *ngIf="display">
+ <ion-item>
+    <ion-toolbar align='center'>
+        <ion-title>Crop Insurance Details</ion-title>
+        <ion-buttons slot='primary'>
+          <ion-button color='primary' (click)='display=false;'>Back</ion-button>
+        </ion-buttons>
+      </ion-toolbar>  
+ </ion-item>   
+   
+<ion-card>
+  <ion-card-subtitle>Policy Details</ion-card-subtitle>
+  <ion-row>
+    <ion-col size-md="4" size-xs="6" >
+        <ion-item>
+            <ion-label position="stacked">Policy Id</ion-label>
+            <ion-input readOnly>{{each_policy.policy_id}}</ion-input>
+          </ion-item>
+    </ion-col>
+
+    <ion-col size-md="4" size-xs="6" >
+        <ion-item>
+            <ion-label position="stacked">Status</ion-label>
+            <ion-input readOnly>{{each_policy.status}}</ion-input>
+          </ion-item>
+    </ion-col>
+    <ion-col size-md="4" size-xs="6">
+        <ion-item>
+            <ion-label position="stacked">Insured Amount</ion-label>
+            <ion-input readOnly>{{each_policy.amount_insured}}</ion-input>
+          </ion-item>
+    </ion-col>
+    <ion-col size-md="4" size-xs="6">
+        <ion-item>
+            <ion-label position="stacked">Start Date</ion-label>
+            <ion-input readOnly>{{each_policy.start_date}}</ion-input>
+          </ion-item>
+    </ion-col>
+    <ion-col size-md="4" size-xs="6">
+        <ion-item>
+            <ion-label position="stacked">End Date</ion-label>
+            <ion-input readOnly>{{each_policy.expiry_dates}}</ion-input>
+          </ion-item>
+    </ion-col>
+    
+
+  </ion-row>
+  
+
+</ion-card> 
+<ion-card>
+    <ion-card-subtitle>Farmer Details</ion-card-subtitle>
+    <ion-row>
+        <ion-col size-md="4" size-xs="6">
+            <ion-item>
+                <ion-label position="stacked">Farmer Id</ion-label>
+                <ion-input readOnly>{{each_policy.farmer_id}}</ion-input>
+              </ion-item>
+        </ion-col>
+      <ion-col size-md="4" size-xs="6" >
+          <ion-item>
+              <ion-label position="stacked">Address</ion-label>
+              <ion-input readOnly>{{each_policy.farm_data.address}}</ion-input>
+            </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size-xs="6">
+          <ion-item>
+              <ion-label position="stacked">Latitude</ion-label>
+              <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.latitude}}</ion-input>
+            </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size-xs="6">
+          <ion-item>
+              <ion-label position="stacked">Longitude</ion-label>
+              <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.longitude}}</ion-input>
+            </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size-xs="6" >
+          <ion-item>
+              <ion-label position="stacked">Crop</ion-label>
+              <ion-input readOnly>{{each_policy.crop_data.Crop_name}}</ion-input>
+            </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size-xs="6">
+          <ion-item>
+              <ion-label position="stacked">Crop Type</ion-label>
+              <ion-input readOnly>{{each_policy.crop_data.Crop_type}}</ion-input>
+            </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size-xs="6">
+          <ion-item>
+              <ion-label position="stacked">Crop Season</ion-label>
+              <ion-input readOnly>{{each_policy.crop_data.Crop_season}}</ion-input>
+            </ion-item>
+      </ion-col> 
+    </ion-row>
+    
+  
+  </ion-card> 
+</div>
+
+
+  
+  
 </ion-content>

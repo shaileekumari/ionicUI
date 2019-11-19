@@ -1,0 +1,19 @@
+{
+    "user_id":"1",
+    "user_type":"farmer",
+    "fullname":"rohan sharma",
+    "phone":"5678945327",
+    "email":"rohanS@gmail.com",
+    "address":"bangalore",
+    "farms":[{
+        "farm_id":"1",
+        "address":"bangalore",
+        "coordinates":[40,41]
+    }],
+    "account_details":[{
+        "account_number":"123456789",
+        "balance":"20000",
+        "bank_name":"state bank"
+
+    }]
+}

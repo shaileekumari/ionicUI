@@ -18,7 +18,11 @@
     "LOGOUT":"लॉग आउट",
     "FARM":"खेत",
     "COORDINATES":"खेत का समन्वय",
-    "CHANGE COLOR":"रंग बदलें"
+    "CHANGE COLOR":"रंग बदलें",
+    "LONGITUDE":"अक्षांश",
+    "LATITUDE":"देशान्तर",
+    "ADDRESS":"पता"
+   
     
  
  
