@@ -11,9 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./farmer/farmer.module').then( m => m.FarmerPageModule)
   },
   {
-    path: 'verify-officer',
-    loadChildren: () => import('./verify-officer/verify-officer.module').then( m => m.VerifyOfficerPageModule)
-  }
+    path: 'insurer',
+    loadChildren: () => import('./insurer/insurer.module').then( m => m.InsurerPageModule)
+  },
+
+ 
 
  
 

@@ -8,12 +8,20 @@
 
 
 <ion-content >
+    <div *ngIf="!editProfile">
   <ion-card>
       <ion-grid>
           <ion-row color="primary" class="ion-justify-content-center">
             <ion-col class="ion-align-self-center border" size-md="6" size-lg="5" size-xs="12">
               <br>
-              <div *ngIf="!editProfile">
+              <div style="padding: 3px;">
+              <div align='center' style="margin: 5px;
+          font-size: 21px;
+          font-weight: 500;
+          border-bottom: 2px solid #d6d3d3;
+          background: linear-gradient(#2c75a0a3, #e2e2def5);">
+              <ion-label>User Details</ion-label>
+            </div>  
                   <ion-item>
                       <ion-label position="floating">Username</ion-label>
                       <ion-input value="{{userData.fullname}}" readonly align='end'></ion-input>
@@ -39,6 +47,13 @@
                       <ion-input value="{{userData.address}}" readonly align='end'></ion-input>
                     </ion-item>
                    <br>
+                   <div align='center' style="margin: 5px;
+                   font-size: 21px;
+                   font-weight: 500;
+                   border-bottom: 2px solid #d6d3d3;
+                   background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.farms.length!=0">
+                       <ion-label>Farm Details</ion-label>
+                     </div> 
                    <div *ngFor='let eachfarm of userData.farms'>
                       <ion-item>
                           <ion-label position="stacked">Farm Id</ion-label>
@@ -56,116 +71,157 @@
                                 </div></ion-input>
                             </ion-item>
                    </div>
+                   <div align='center' style="margin: 5px;
+                   font-size: 21px;
+                   font-weight: 500;
+                   border-bottom: 2px solid #d6d3d3;
+                   background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.account_details.length!=0">
+                       <ion-label>Account Details</ion-label>
+                     </div> 
+                   <div *ngFor='let eachAccount of userData.account_details'>
+                      <ion-item>
+                          <ion-label position="stacked">Bank Name</ion-label>
+                          <ion-input value="{{eachAccount.bank_name}}" readonly align='end'></ion-input>
+                        </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked">Account Number</ion-label>
+                        <ion-input value="{{eachAccount.account_number}}" readonly align='end'></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label position="stacked">Account Balance</ion-label>
+                          <ion-input value="{{eachAccount.balance}}" readonly align='end'></ion-input>
+                        </ion-item>
+
+                
                    
                    <br>
 
 
               </div>
+              </div>
 
-<div *ngIf="editProfile">
-  <ion-card>
-      <div align='center' class="shadow">
-          <ion-label>Farm Details</ion-label>
-        </div>  
-      <form #farmform="ngForm" (ngSubmit)="updatefarm(farmform)">
-       
-            
-              
-        <ion-item>
-           
-         <ion-label position="stacked">Farm Address</ion-label>
-          <ion-input name="farmAddress" type="text"  ngModel required></ion-input>
-        </ion-item>
-        <br>
-        <ion-item>
-           
-            <ion-label position="stacked">Crop Name</ion-label>
-             <ion-input name="crop" type="text"  ngModel required></ion-input>
-           </ion-item>
-           <br>
-    
-           <ion-item>
-           
-              <ion-label position="stacked">Crop Type</ion-label>
-               <ion-input name="cropType" type="text"  ngModel required></ion-input>
-             </ion-item>
-             <br>
-    
-          
-       
-    
-        <div>
-          <ion-toolbar>
-              <ion-buttons slot="primary">
-                  <ion-button size="large" type="submit" [disabled]="farmform.invalid">Update</ion-button>
-       
-                  <ion-button (click)="editProfile=false">Close</ion-button>
-                </ion-buttons>
-          </ion-toolbar>
-           
-            
-        </div>
-        
-    
-    </form>
-    <div align="center" class="shadow">
-        <ion-label>Account Details </ion-label>
-    </div>
-    
-      <form #form="ngForm" (ngSubmit)="updateAccount(form)">
-       
-            
-             
-          
-            
-          
-          <ion-item>
-              <ion-label position="stacked">Bank Name</ion-label>
-              <ion-input name="bank_name" type="text" ngModel required></ion-input>
-           
-            
-          </ion-item>
-          <ion-item>
-            
-              <ion-label position="stacked">Account Number</ion-label>
-              <ion-input name="account_number" type="text"  ngModel required></ion-input>
-             
-              
-            </ion-item>
-          <ion-item>
-            
-           
-            <ion-label position="stacked">Account Balance</ion-label>
-            <ion-input name="balance" type="number"  ngModel required></ion-input>
-            
-          </ion-item>
-          <br>
-         
-       
-     
-          <div>
-            <ion-toolbar>
-                <ion-buttons slot="primary">
-                    <ion-button size="large" type="submit" [disabled]="form.invalid">Update</ion-button>
-         
-                    <ion-button (click)="editProfile=false">Close</ion-button>
-                  </ion-buttons>
-            </ion-toolbar>
-             
-              
-          </div>
-          
 
-</form>
 
-  </ion-card>
-   
-</div>
     
   
   </ion-col>
   </ion-row>
   </ion-grid>
   </ion-card>
-
+</div>
+  <div *ngIf="editProfile">
+      <ion-card>
+          <ion-grid>
+              <ion-row color="primary" class="ion-justify-content-center">
+                <ion-col class="ion-align-self-center border" size-md="6" size-lg="5" size-xs="12">
+                  <br>
+          <div align='center' style="margin: 5px;
+          font-size: 21px;
+          font-weight: 500;
+          border-bottom: 2px solid #d6d3d3;
+          background: linear-gradient(#2c75a0a3, #e2e2def5);">
+              <ion-label>Farm Details</ion-label>
+            </div>  
+          <form #farmform="ngForm" (ngSubmit)="updatefarm(farmform)">
+           
+                
+                  
+            <ion-item>
+               
+             <ion-label position="stacked">Farm Address</ion-label>
+              <ion-input name="farmAddress" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <br>
+            <ion-item>
+               
+                <ion-label position="stacked">Crop Name</ion-label>
+                 <ion-input name="crop" type="text"  ngModel required></ion-input>
+               </ion-item>
+               <br>
+        
+               <ion-item>
+               
+                  <ion-label position="stacked">Crop Type</ion-label>
+                   <ion-input name="cropType" type="text"  ngModel required></ion-input>
+                 </ion-item>
+                 <br>
+        
+              
+           
+        
+            <div>
+              <ion-toolbar>
+                  <ion-buttons slot="primary">
+                      <ion-button size="large" type="submit" [disabled]="farmform.invalid">Update</ion-button>
+           
+                      <ion-button (click)="editProfile=false">Close</ion-button>
+                    </ion-buttons>
+              </ion-toolbar>
+               
+                
+            </div>
+            
+        
+        </form>
+        <div align="center" style="margin: 5px;
+        font-size: 21px;
+        font-weight: 500;
+        border-bottom: 2px solid #d6d3d3;
+        background: linear-gradient(#2c75a0a3, #e2e2def5);">
+            <ion-label>Account Details </ion-label>
+        </div>
+        
+          <form #form="ngForm" (ngSubmit)="updateAccount(form)">
+           
+                
+                 
+              
+                
+              
+              <ion-item>
+                  <ion-label position="stacked">Bank Name</ion-label>
+                  <ion-input name="bank_name" type="text" ngModel required></ion-input>
+               
+                
+              </ion-item>
+              <ion-item>
+                
+                  <ion-label position="stacked">Account Number</ion-label>
+                  <ion-input name="account_number" type="text"  ngModel required></ion-input>
+                 
+                  
+                </ion-item>
+              <ion-item>
+                
+               
+                <ion-label position="stacked">Account Balance</ion-label>
+                <ion-input name="balance" type="number"  ngModel required></ion-input>
+                
+              </ion-item>
+              <br>
+             
+           
+         
+              <div>
+                <ion-toolbar>
+                    <ion-buttons slot="primary">
+                        <ion-button size="large" type="submit" [disabled]="form.invalid">Update</ion-button>
+             
+                        <ion-button (click)="editProfile=false">Close</ion-button>
+                      </ion-buttons>
+                </ion-toolbar>
+                 
+                  
+              </div>
+              
+    
+    </form>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    
+      </ion-card>
+       
+    </div>
+  
 </ion-content>

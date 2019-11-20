@@ -34,17 +34,25 @@ uploadFile($event){
   let reader = new FileReader();
   var file=$event.target.files[0];
   reader.readAsDataURL(file);
-  console.log(reader);
+  // console.log(file,reader,file.name,(<string>reader.result).split(',')[1]);
   
   var formdata=new FormData();
-  reader.onload = () => {
+  var h='';
   
-
+  // formdata.append('fileName',file.name);
+  //   formdata.append('fileData',(<string>reader.result).split(',')[1]);
+  reader.onload = () => {
+    console.log(reader.result);
+    h=(<string>reader.result).split(',')[1];
+    console.log(h,file.name);
+    
 
     formdata.append('fileName',file.name);
     formdata.append('fileData',(<string>reader.result).split(',')[1]); // file data as string
+    console.log(formdata.getAll('fileData'));
+
 }
-console.log(formdata);
+// console.log(formdata.getAll('fileName'),h);
 
 
 }

@@ -1,0 +1,15 @@
+{
+    "user_id":"2",
+    "user_type":"Insurer",
+    "fullname":"Kartik Varma",
+    "phone":"6578342789",
+    "email":"kartikvar@gmail.com",
+    "address":"bangalore",
+    "farms":[],
+    "account_details":[{
+        "account_number":"6753458778",
+        "balance":"200009",
+        "bank_name":"state bank"
+
+    }]
+}

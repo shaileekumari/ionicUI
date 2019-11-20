@@ -19,10 +19,10 @@ export class Tab1Page {
     if(form.value.role=='farmer'){
       this.route.navigateByUrl('farmer');
     }
-    
     else{
-      this.route.navigateByUrl('verify-officer');
+      this.route.navigateByUrl('insurer');
     }
+   
     
   }
   languageChanged(){

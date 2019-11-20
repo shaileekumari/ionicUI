@@ -9,6 +9,7 @@ export class ProfilePage implements OnInit {
 
   private currentColor: string
   editProfile:boolean=false;
+  visibleSidebar2;
   constructor(private ps:ProfileService) { 
     this.currentColor = 'light';
   }
@@ -35,26 +36,10 @@ export class ProfilePage implements OnInit {
     }]
   }
 
-  farmer={
-    name:'A',
-    email:'abc@gmail.com',
-    phone:'23456787565',
-    address:'Bangalore,India',
-    farm:{
-      farm1:['4 acres','Bangalore, India'],
-      farm2:['2 acres','Bangalore, India']
-    }
-   
-  }
-  farmlist;
-  farms;
+ 
  
   ngOnInit() {
-    this.farmlist=Object.keys(this.farmer.farm);
-    console.log(this.farmlist);
-    
-  
-  this.farms=this.farmer.farm;
+
   this.userProfile();
   }
 
