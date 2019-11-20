@@ -40,7 +40,7 @@
                     </ion-item>
                     <ion-item>
                         <ion-label position="stacked">Email</ion-label>
-                        <ion-input value="{{userData.phone}}" readonly align='end'></ion-input>
+                        <ion-input value="{{userData.email}}" readonly align='end'></ion-input>
                       </ion-item>
                     <ion-item>
                       <ion-label position="stacked">Address</ion-label>
@@ -145,6 +145,22 @@
                    <ion-input name="cropType" type="text"  ngModel required></ion-input>
                  </ion-item>
                  <br>
+
+                 <ion-item>
+               
+                  <ion-label position="stacked">Crop Season</ion-label>
+                   <ion-input name="cropSeason" type="text"  ngModel required></ion-input>
+                 </ion-item>
+                 <br>
+
+                 <ion-item>
+               
+                  <ion-label position="stacked">Crop State</ion-label>
+                   <ion-input name="cropState" type="text"  ngModel required></ion-input>
+                 </ion-item>
+                 <br>
+
+
         
               
            
@@ -191,13 +207,7 @@
                  
                   
                 </ion-item>
-              <ion-item>
-                
-               
-                <ion-label position="stacked">Account Balance</ion-label>
-                <ion-input name="balance" type="number"  ngModel required></ion-input>
-                
-              </ion-item>
+
               <br>
              
            

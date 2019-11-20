@@ -16,11 +16,18 @@ export class ClaimsPage implements OnInit {
     'red':'danger',
     'green':'success'
   }
-
+  uploadTrue:boolean=false;
   insFile='';
+  each_policy;
   constructor() { 
     this.currentColor = 'light';
+    this.each_policy={
+      "provider":"SBI",
+      "policy_id":"","farmer_id":"faman1","status":"","start_date":"1/11/2019","expiry_dates":"5/03/2020",
+      "amount_insured":"20000","farm_data":{"address":"Bangalore","geo_coordinates":{"longitude":"12","latitude":"13"}},
+      "crop_data":{"Crop_name":"Rice","Crop_type":"Cereal Grains","Crop_season":"Kharif","Crop_state":"Planting"}};
   }
+
 
   ngOnInit() {
   }
@@ -50,7 +57,7 @@ uploadFile($event){
     formdata.append('fileName',file.name);
     formdata.append('fileData',(<string>reader.result).split(',')[1]); // file data as string
     console.log(formdata.getAll('fileData'));
-
+    this.uploadTrue=true;
 }
 // console.log(formdata.getAll('fileName'),h);
 
