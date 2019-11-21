@@ -15,6 +15,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTabsModule,
     MatSidenavModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule,
+    
     
   ]
 

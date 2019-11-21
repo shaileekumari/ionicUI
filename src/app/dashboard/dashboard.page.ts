@@ -21,6 +21,7 @@ export class DashboardPage implements OnInit {
   
   constructor(private dashboardService:DashboardService) {
     this.policydata=this.policy_details;
+    this.display=false;
    }
    display: boolean = false;
 

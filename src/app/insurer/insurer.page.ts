@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {InsurerService} from './insurer.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-insurer',
   templateUrl: './insurer.page.html',
@@ -76,6 +76,16 @@ profile(){
     }
   )
 }
-
+acceptClaim(){
+  Swal.fire({
+    position: 'center',
+    type: 'success',
+    title: 'Success...',
+    text: 'Insurance Claim Request has been accepted successfully',
+    showConfirmButton: false,
+    timer: 2000
+  })
+  this.display=false;
+}
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from './profile.service';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -12,6 +13,7 @@ export class ProfilePage implements OnInit {
   visibleSidebar2;
   constructor(private ps:ProfileService) { 
     this.currentColor = 'light';
+    this.editProfile=false;
   }
 
 
@@ -41,6 +43,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
 
   this.userProfile();
+  this.editProfile=false;
   }
 
   userProfile(){
@@ -62,10 +65,27 @@ export class ProfilePage implements OnInit {
   updatefarm(form){
   console.log(form.value);
   this.editProfile=false;
+  Swal.fire({
+    position: 'center',
+    type: 'success',
+    title: 'Success...',
+    text: 'Farmer Data has been updated successfully',
+    showConfirmButton: false,
+    timer: 2000
+  })
     
   }
   updateAccount(form){
     console.log(form.value);
     this.editProfile=false;
+    Swal.fire({
+      position: 'center',
+      type: 'success',
+      title: 'Success...',
+      text: 'Farmer Account has been added successfully',
+      showConfirmButton: false,
+      timer: 2000
+    })
+      
   }
 }

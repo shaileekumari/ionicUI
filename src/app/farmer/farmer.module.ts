@@ -8,7 +8,7 @@ import { FarmerPageRoutingModule } from './farmer-routing.module';
 
 import { FarmerPage } from './farmer.page';
 import { TranslateModule } from '@ngx-translate/core';
-
+import {MaterialModule} from '../material.module';
 
 @NgModule({
   imports: [
@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     FarmerPageRoutingModule,
+    MaterialModule,
     TranslateModule.forChild()
   ],
   declarations: [FarmerPage]

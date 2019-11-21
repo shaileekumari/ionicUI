@@ -9,15 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmerPage implements OnInit {
 
-
+n;
   constructor() { }
 
   ngOnInit() {
   }
 
 
-  logout(){
 
+
+  showNotifications(){
+    this.n=1;
   }
 
 }
