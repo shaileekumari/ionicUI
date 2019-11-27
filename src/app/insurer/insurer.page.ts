@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import {InsurerService} from './insurer.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'app-insurer',
   templateUrl: './insurer.page.html',
@@ -33,7 +35,7 @@ export class InsurerPage implements OnInit {
     "amount_insured":"","farm_data":{"address":"","geo_coordinates":{"longitude":"","latitude":""}},
     "crop_data":{"Crop_name":"","Crop_type":"","Crop_season":""}}]
     policydata;
-  constructor(private ins:InsurerService) { }
+  constructor(private ins:InsurerService, private as:AuthService) { }
 
   ngOnInit() {
     this.getInsuranceClaims();
@@ -79,7 +81,7 @@ profile(){
 acceptClaim(){
   Swal.fire({
     position: 'center',
-    type: 'success',
+    icon: 'success',
     title: 'Success...',
     text: 'Insurance Claim Request has been accepted successfully',
     showConfirmButton: false,
@@ -88,4 +90,8 @@ acceptClaim(){
   this.display=false;
 }
 
+logout(){
+  this.as.logout();
+  window.location.replace('/')
+}
 }

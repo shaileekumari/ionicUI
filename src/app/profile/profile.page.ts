@@ -67,7 +67,7 @@ export class ProfilePage implements OnInit {
   this.editProfile=false;
   Swal.fire({
     position: 'center',
-    type: 'success',
+    icon: 'warning',
     title: 'Success...',
     text: 'Farmer Data has been updated successfully',
     showConfirmButton: false,
@@ -80,7 +80,7 @@ export class ProfilePage implements OnInit {
     this.editProfile=false;
     Swal.fire({
       position: 'center',
-      type: 'success',
+      icon: 'success',
       title: 'Success...',
       text: 'Farmer Account has been added successfully',
       showConfirmButton: false,

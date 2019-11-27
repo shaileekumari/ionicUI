@@ -1,3 +1,3 @@
 export var conf={
-    "URL":"http://localhost:3000/"
+    "URL":"http://40.117.231.6:4000/"
 }

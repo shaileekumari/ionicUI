@@ -15,7 +15,7 @@
 
         <mat-menu #appMenu="matMenu">
             <button mat-menu-item>Welcome Kartik!</button>
-            <button mat-menu-item><a href='/'>Logout</a></button>
+            <button mat-menu-item (click)='logout()'>Logout</button>
           </mat-menu>
           
           <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -81,38 +81,38 @@
           font-weight: 500;
           border-bottom: 2px solid #d6d3d3;
           background: linear-gradient(#2c75a0a3, #e2e2def5);">
-              <ion-label>Policy Details</ion-label>
+              <ion-label class='font'>Policy Details</ion-label>
             </div>
                  <!-- <ion-card-subtitle>Policy Details</ion-card-subtitle> -->
                  <ion-row>
                    <ion-col size-md="4" size-xs="6" >
                        <ion-item>
-                           <ion-label position="stacked">Policy Id</ion-label>
+                           <ion-label class='font' position="stacked">Policy Id</ion-label>
                            <ion-input readOnly>{{each_policy.policy_id}}</ion-input>
                          </ion-item>
                    </ion-col>
                
                    <ion-col size-md="4" size-xs="6" >
                        <ion-item>
-                           <ion-label position="stacked">Status</ion-label>
+                           <ion-label class='font' position="stacked">Status</ion-label>
                            <ion-input readOnly>{{each_policy.status}}</ion-input>
                          </ion-item>
                    </ion-col>
                    <ion-col size-md="4" size-xs="6">
                        <ion-item>
-                           <ion-label position="stacked">Insured Amount</ion-label>
+                           <ion-label class='font' position="stacked">Insured Amount</ion-label>
                            <ion-input readOnly>{{each_policy.amount_insured}}</ion-input>
                          </ion-item>
                    </ion-col>
                    <ion-col size-md="4" size-xs="6">
                        <ion-item>
-                           <ion-label position="stacked">Start Date</ion-label>
+                           <ion-label class='font' position="stacked">Start Date</ion-label>
                            <ion-input readOnly>{{each_policy.start_date}}</ion-input>
                          </ion-item>
                    </ion-col>
                    <ion-col size-md="4" size-xs="6">
                        <ion-item>
-                           <ion-label position="stacked">End Date</ion-label>
+                           <ion-label class='font' position="stacked">End Date</ion-label>
                            <ion-input readOnly>{{each_policy.expiry_dates}}</ion-input>
                          </ion-item>
                    </ion-col>
@@ -128,60 +128,60 @@
                   font-weight: 500;
                   border-bottom: 2px solid #d6d3d3;
                   background: linear-gradient(#2c75a0a3, #e2e2def5);">
-                      <ion-label>Farm Details</ion-label>
+                      <ion-label class='font'>Farm Details</ion-label>
                     </div>
                    <ion-row>
                        <ion-col size-md="4" size-xs="6">
                            <ion-item>
-                               <ion-label position="stacked">Farmer Id</ion-label>
+                               <ion-label class='font' position="stacked">Farmer Id</ion-label>
                                <ion-input readOnly>{{each_policy.farmer_id}}</ion-input>
                              </ion-item>
                        </ion-col>
                        <ion-col size-md="4" size-xs="6">
                           <ion-item>
-                              <ion-label position="stacked">Farmer Nmae</ion-label>
+                              <ion-label class='font' position="stacked">Farmer Nmae</ion-label>
                               <ion-input readOnly>Vaibhaw Gupta</ion-input>
                             </ion-item>
                       </ion-col>
                      <ion-col size-md="4" size-xs="6" >
                          <ion-item>
-                             <ion-label position="stacked">Address</ion-label>
+                             <ion-label class='font' position="stacked">Address</ion-label>
                              <ion-input readOnly>{{each_policy.farm_data.address}}</ion-input>
                            </ion-item>
                      </ion-col>
                      <ion-col size-md="4" size-xs="6">
                          <ion-item>
-                             <ion-label position="stacked">Latitude</ion-label>
+                             <ion-label class='font' position="stacked">Latitude</ion-label>
                              <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.latitude}}</ion-input>
                            </ion-item>
                      </ion-col>
                      <ion-col size-md="4" size-xs="6">
                          <ion-item>
-                             <ion-label position="stacked">Longitude</ion-label>
+                             <ion-label class='font' position="stacked">Longitude</ion-label>
                              <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.longitude}}</ion-input>
                            </ion-item>
                      </ion-col>
                      <ion-col size-md="4" size-xs="6" >
                          <ion-item>
-                             <ion-label position="stacked">Crop</ion-label>
+                             <ion-label class='font' position="stacked">Crop</ion-label>
                              <ion-input readOnly>{{each_policy.crop_data.Crop_name}}</ion-input>
                            </ion-item>
                      </ion-col>
                      <ion-col size-md="4" size-xs="6">
                          <ion-item>
-                             <ion-label position="stacked">Crop Type</ion-label>
+                             <ion-label class='font' position="stacked">Crop Type</ion-label>
                              <ion-input readOnly>{{each_policy.crop_data.Crop_type}}</ion-input>
                            </ion-item>
                      </ion-col>
                      <ion-col size-md="4" size-xs="6">
                          <ion-item>
-                             <ion-label position="stacked">Crop Season</ion-label>
+                             <ion-label class='font' position="stacked">Crop Season</ion-label>
                              <ion-input readOnly>{{each_policy.crop_data.Crop_season}}</ion-input>
                            </ion-item>
                      </ion-col> 
                      <ion-col size-md="4" size-xs="6">
                         <ion-item>
-                            <ion-label position="stacked">Crop State</ion-label>
+                            <ion-label class='font' position="stacked">Crop State</ion-label>
                             <ion-input readOnly>{{each_policy.crop_data.Crop_state}}</ion-input>
                           </ion-item>
 
@@ -213,30 +213,30 @@
                           font-weight: 500;
                           border-bottom: 2px solid #d6d3d3;
                           background: linear-gradient(#2c75a0a3, #e2e2def5);">
-                              <ion-label>User Details</ion-label>
+                              <ion-label class='font'>User Details</ion-label>
                             </div>  
                                   <ion-item>
-                                      <ion-label position="floating">Username</ion-label>
+                                      <ion-label class='font' position="floating">Username</ion-label>
                                       <ion-input value="{{userData.fullname}}" readonly align='end'></ion-input>
                                     </ion-item>
                                     <ion-item>
-                                        <ion-label position="stacked">User Id</ion-label>
+                                        <ion-label class='font' position="stacked">User Id</ion-label>
                                         <ion-input value="{{userData.user_id}}" readonly align='end'></ion-input>
                                       </ion-item>
                                     <ion-item>
-                                      <ion-label position="stacked">Role</ion-label>
+                                      <ion-label class='font' position="stacked">Role</ion-label>
                                       <ion-input value="{{userData.user_type}}" readonly align='end'></ion-input>
                                     </ion-item>
                                     <ion-item>
-                                      <ion-label position="stacked">Phone No.</ion-label>
+                                      <ion-label class='font' position="stacked">Phone No.</ion-label>
                                       <ion-input value="{{userData.phone}}" readonly align='end'></ion-input>
                                     </ion-item>
                                     <ion-item>
-                                        <ion-label position="stacked">Email</ion-label>
+                                        <ion-label class='font' position="stacked">Email</ion-label>
                                         <ion-input value="{{userData.email}}" readonly align='end'></ion-input>
                                       </ion-item>
                                     <ion-item>
-                                      <ion-label position="stacked">Address</ion-label>
+                                      <ion-label class='font' position="stacked">Address</ion-label>
                                       <ion-input value="{{userData.address}}" readonly align='end'></ion-input>
                                     </ion-item>
                                    <br>
@@ -245,19 +245,19 @@
                                    font-weight: 500;
                                    border-bottom: 2px solid #d6d3d3;
                                    background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.farms.length!=0">
-                                       <ion-label>Farm Details</ion-label>
+                                       <ion-label class='font'>Farm Details</ion-label>
                                      </div> 
                                    <div *ngFor='let eachfarm of userData.farms'>
                                       <ion-item>
-                                          <ion-label position="stacked">Farm Id</ion-label>
+                                          <ion-label class='font' position="stacked">Farm Id</ion-label>
                                           <ion-input value="{{eachfarm.farm_id}}" readonly align='end'></ion-input>
                                         </ion-item>
                                         <ion-item>
-                                            <ion-label position="stacked">Farm Address</ion-label>
+                                            <ion-label class='font' position="stacked">Farm Address</ion-label>
                                             <ion-input value="{{eachfarm.address}}" readonly align='end'></ion-input>
                                           </ion-item>
                                           <ion-item>
-                                              <ion-label position="stacked">Farm Coordinates</ion-label>
+                                              <ion-label class='font' position="stacked">Farm Coordinates</ion-label>
                                               <ion-input  readonly align='end'>
                                                 <div *ngIf="eachfarm.coordinates.length==2">
                                                     {{eachfarm.coordinates[0]}} &nbsp;&nbsp; {{eachfarm.coordinates[1]}}
@@ -269,19 +269,19 @@
                                    font-weight: 500;
                                    border-bottom: 2px solid #d6d3d3;
                                    background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.account_details.length!=0">
-                                       <ion-label>Account Details</ion-label>
+                                       <ion-label class='font'>Account Details</ion-label>
                                      </div> 
                                    <div *ngFor='let eachAccount of userData.account_details'>
                                       <ion-item>
-                                          <ion-label position="stacked">Bank Name</ion-label>
+                                          <ion-label class='font' position="stacked">Bank Name</ion-label>
                                           <ion-input value="{{eachAccount.bank_name}}" readonly align='end'></ion-input>
                                         </ion-item>
                                     <ion-item>
-                                        <ion-label position="stacked">Account Number</ion-label>
+                                        <ion-label class='font' position="stacked">Account Number</ion-label>
                                         <ion-input value="{{eachAccount.account_number}}" readonly align='end'></ion-input>
                                       </ion-item>
                                       <ion-item>
-                                          <ion-label position="stacked">Account Balance</ion-label>
+                                          <ion-label class='font' position="stacked">Account Balance</ion-label>
                                           <ion-input value="{{eachAccount.balance}}" readonly align='end'></ion-input>
                                         </ion-item>
                 
@@ -313,7 +313,7 @@
                       font-weight: 500;
                       border-bottom: 2px solid #d6d3d3;
                       background: linear-gradient(#2c75a0a3, #e2e2def5);">
-                          <ion-label>Farm Details</ion-label>
+                          <ion-label class='font'>Farm Details</ion-label>
                         </div>  
                       <form #farmform="ngForm" (ngSubmit)="updatefarm(farmform)">
                         
@@ -321,20 +321,20 @@
                               
                         <ion-item>
                             
-                          <ion-label position="stacked">Farm Address</ion-label>
+                          <ion-label class='font' position="stacked">Farm Address</ion-label>
                           <ion-input name="farmAddress" type="text"  ngModel required></ion-input>
                         </ion-item>
                         <br>
                         <ion-item>
                             
-                            <ion-label position="stacked">Crop Name</ion-label>
+                            <ion-label class='font' position="stacked">Crop Name</ion-label>
                               <ion-input name="crop" type="text"  ngModel required></ion-input>
                             </ion-item>
                             <br>
                     
                             <ion-item>
                             
-                              <ion-label position="stacked">Crop Type</ion-label>
+                              <ion-label class='font' position="stacked">Crop Type</ion-label>
                                 <ion-input name="cropType" type="text"  ngModel required></ion-input>
                               </ion-item>
                               <br>
@@ -361,7 +361,7 @@
                     font-weight: 500;
                     border-bottom: 2px solid #d6d3d3;
                     background: linear-gradient(#2c75a0a3, #e2e2def5);">
-                        <ion-label>Account Details </ion-label>
+                        <ion-label class='font'>Account Details </ion-label>
                     </div>
                     
                       <form #form="ngForm" (ngSubmit)="updateAccount(form)">
@@ -372,14 +372,14 @@
                             
                           
                           <ion-item>
-                              <ion-label position="stacked">Bank Name</ion-label>
+                              <ion-label class='font' position="stacked">Bank Name</ion-label>
                               <ion-input name="bank_name" type="text" ngModel required></ion-input>
                             
                             
                           </ion-item>
                           <ion-item>
                             
-                              <ion-label position="stacked">Account Number</ion-label>
+                              <ion-label class='font' position="stacked">Account Number</ion-label>
                               <ion-input name="account_number" type="text"  ngModel required></ion-input>
                               
                               
@@ -387,7 +387,7 @@
                           <ion-item>
                             
                             
-                            <ion-label position="stacked">Account Balance</ion-label>
+                            <ion-label class='font' position="stacked">Account Balance</ion-label>
                             <ion-input name="balance" type="number"  ngModel required></ion-input>
                             
                           </ion-item>

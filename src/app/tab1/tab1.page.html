@@ -20,7 +20,7 @@
       </ion-row>
       </ion-grid>
     </div>
-      <div class="ion-padding" >
+      <div class="ion-padding" *ngIf="!forgot">
 
       
   <form #form="ngForm" (ngSubmit)="login(form)">
@@ -32,7 +32,7 @@
             <ion-item>
                
              
-              <ion-input name="phoneNumber" type="number" placeholder="{{ 'PHONENO' | translate }}"  ngModel required></ion-input>
+              <ion-input name="phoneNo" type="number" placeholder="{{ 'PHONENO' | translate }}"  ngModel required></ion-input>
             </ion-item>
             <br>
             <ion-item>
@@ -50,7 +50,7 @@
               </ion-item>
           </div>
           <div class="ion-padding" align='end'>
-            <ion-button fill='clear' >{{'FORGOT PASSWORD' | translate}} ?</ion-button>
+            <ion-button fill='clear' (click)="forgot=true;" >{{'FORGOT PASSWORD' | translate}} ?</ion-button>
           </div>
           <div class="ion-padding">
             <ion-button size="large"  type="submit" [disabled]="form.invalid" expand="block">{{ 'LOGIN' | translate }}</ion-button>
@@ -60,4 +60,47 @@
     </ion-grid>
   </form>
   </div>
+
+  <div class="ion-padding" *ngIf="forgot">
+
+      
+      <form #forgotform="ngForm" (ngSubmit)="forgotPassword(forgotform)">
+        <ion-grid>
+          <ion-row color="primary" class="ion-justify-content-center">
+            <ion-col class="ion-align-self-center shadow" size-md="6" size-lg="5" size-xs="12">
+             
+              <div class="ion-padding">
+
+                 
+                <ion-item>
+                   
+                  <ion-label class='font' position='stacked'>Phone Number</ion-label>
+                  <ion-input name="phoneNo" type="number"   ngModel required></ion-input>
+                </ion-item>
+                <br>
+                <ion-item>
+                   
+                    <ion-label class='font' position='stacked'>New Password</ion-label>
+                  <ion-input name="password" type="password"  ngModel required></ion-input>
+                </ion-item>
+                <br>
+              </div>
+
+              <div align='center'>
+                
+                    
+                          <ion-button size="default"  type="submit" [disabled]="forgotform.invalid">Submit</ion-button>
+                          &nbsp;&nbsp;
+                          <ion-button size="default" (click)='forgot=false;'>Close</ion-button>
+                      
+               
+                   
+                    
+                </div>
+             
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      </div>
 </ion-content>
