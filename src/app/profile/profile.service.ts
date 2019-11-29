@@ -27,4 +27,55 @@ export class ProfileService {
     console.log("inside error",error);
     return error;
     }
+
+    saveUserBlockainData(userData){
+      const httpOptions = {
+        headers: new HttpHeaders({
+        'Content-Type': 'Application/json; charset=UTF-8',
+    
+        
+        }),
+        };
+        let email;
+        if(userData.email==""){
+          email="NONE";
+        }else{
+          email=userData.email;
+        }
+        let body={
+        fcn:"registerUser",
+        args:["farmer"+userData.phoneNo,"Farmer",userData.firstName+userData.lastName,email,userData.phoneNo+""]
+        }
+
+        return this.http.post<any>(conf.URL+'channels/mychannel/chaincodes/usercc2',body,httpOptions )
+        .pipe(map(res => {
+            console.log(res); 
+            
+            return res;
+        }),
+      tap(event=>{},this.handleErrorObservable)
+    );
+    }
+
+    fetchUserDataByUserID(userId){
+      const httpOptions = {
+        headers: new HttpHeaders({
+        'Content-Type': 'Application/json; charset=UTF-8',
+    
+        
+        }),
+        };
+        let id=[];
+        id[0]=userId;
+      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/usercc2',{params:{'peer':"peer1.org1.example.com",'fcn':"fetchUserDataByUserID", 'args':'['+userId+']'}} )
+      .pipe(map(res => {
+        console.log(res); 
+        
+        return res;
+    }),
+  tap(event=>{},this.handleErrorObservable)
+);
+    }
+
+
 }

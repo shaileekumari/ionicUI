@@ -42,6 +42,8 @@ export class ProfilePage implements OnInit {
  
   ngOnInit() {
 
+
+    this.saveUserBlockainData();
   this.userProfile();
   this.editProfile=false;
   }
@@ -59,6 +61,7 @@ export class ProfilePage implements OnInit {
     )
   }
   updateProfile(){
+    this.fetchUserDataByUserID()
     this.editProfile=true;
   }
 
@@ -87,5 +90,58 @@ export class ProfilePage implements OnInit {
       timer: 2000
     })
       
+  }
+
+  saveUserBlockainData(){
+    let userString=sessionStorage.getItem("userData");
+    let userD=JSON.parse(userString);
+    console.log(userD);
+    
+    this.ps.saveUserBlockainData(userD)
+    .subscribe(
+      res=>{
+        console.log(res);
+        if(res.success==true){
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Success...',
+            text: 'Farmer Account has been Registerd successfully in Blockchain',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error...',
+            text: res.message,
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+      },
+      err=>{
+        console.log(err);
+        
+      }
+    )
+  }
+
+  fetchUserDataByUserID(){
+    let userString=sessionStorage.getItem("userData");
+    let userD=JSON.parse(userString);
+    console.log(userD);
+    this.ps.fetchUserDataByUserID("farmer"+userD.phoneNo)
+    .subscribe(
+      res=>{
+        console.log(res);
+        
+      },
+      err=>{
+        console.log(err);
+        
+      }
+    )
   }
 }
