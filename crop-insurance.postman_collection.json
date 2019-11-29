@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "22f57677-9d53-4f6f-abab-0b132b51aa4d",
+		"name": "crop-insurance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createTrigger",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "d36113cdf8f7bf651cbfee95f9eeeb80",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "appid",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"time_period\":{\n      \"start\":{\n         \"expression\":\"after\",\n         \"amount\":132000000\n      },\n      \"end\":{\n         \"expression\":\"after\",\n         \"amount\":432000000\n      }\n   },\n   \"conditions\":[\n      {\n         \"name\":\"weather\",\n         \"expression\":\"$eq\",\n         \"amount\":299\n      }\n   ],\n   \"area\":[\n      {\n         \"type\":\"Point\",\n         \"coordinates\":[\n            53,\n            37\n         ]\n      }\n   ]\n}"
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/data/3.0/triggers",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTriggerById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.openweathermap.org/data/3.0/triggers/5852816a9aaacb00153134a3?appid=d36113cdf8f7bf651cbfee95f9eeeb80",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers",
+						"5852816a9aaacb00153134a3"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "d36113cdf8f7bf651cbfee95f9eeeb80"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Jim",
+							"type": "text"
+						},
+						{
+							"key": "orgName",
+							"value": "Org1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/users",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Channel request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMwMjgsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzIiLCJpYXQiOjE1NzUwMjcwMjh9.e8E7Ga8R1mz5yEDp3esMrqXwkvyNrkqImT9NESlLwpo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"peers\": [\"peer0.org2.example.com\",\"peer1.org2.example.com\"]\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/peers",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"peers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Channel request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjI3NDAsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjY3NDB9.Kw7TYkoz1xpps5f9i33QopjIESKYnH-KUpjmGGItEgE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"channelName\":\"mychannel\",\n  \"channelConfigPath\":\"../artifacts/channel/mychannel.tx\"\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Instantiate chaincode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chaincodeName\":\"usercc2\",\n\t\"chaincodeVersion\":\"v0\",\n\t\"chaincodeType\": \"golang\",\n\t\"args\":[]\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Install chaincode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"peers\": [\"peer0.org1.example.com\",\"peer1.org1.example.com\"],\n\t\"chaincodeName\":\"usercc2\",\n\t\"chaincodePath\":\"github.com/chaincodes/Users\",\n\t\"chaincodeType\": \"golang\",\n\t\"chaincodeVersion\":\"v0\"\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/chaincodes",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"chaincodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invoke request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fcn\":\"registerUser\",\n\t\"args\":[\"farmer1\", \"Farmer\", \"Ram Singh\", \"NONE\", \"9632587410\"]\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chaincode Query",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjkzNDA2OTksInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Im9yZzEiLCJpYXQiOjE1MjkzMDQ2OTl9.sGFl_nucg8o5ucq-_p4g9zQ7pvPS9v7rSc6A3EnF3y8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://18.130.59.166:8080/channels/mychannel/chaincodes/mycc?peer=peer1&fcn=query&args=[\"a\"]",
+					"protocol": "http",
+					"host": [
+						"18",
+						"130",
+						"59",
+						"166"
+					],
+					"port": "8080",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"mycc"
+					],
+					"query": [
+						{
+							"key": "peer",
+							"value": "peer1"
+						},
+						{
+							"key": "fcn",
+							"value": "query"
+						},
+						{
+							"key": "args",
+							"value": "[\"a\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invoke request-registerUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fcn\":\"registerUser\",\n\t\"args\":[\"farmer1\", \"Farmer\", \"Ram Singh\", \"NONE\", \"9632587410\"]\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchUserDataByUserID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2?peer=peer1.org1.example.com&fcn=fetchUserDataByUserID&args=[\"farmer1\"]",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					],
+					"query": [
+						{
+							"key": "peer",
+							"value": "peer1.org1.example.com"
+						},
+						{
+							"key": "fcn",
+							"value": "fetchUserDataByUserID"
+						},
+						{
+							"key": "args",
+							"value": "[\"farmer1\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProfile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fcn\":\"updateProfile\",\n\t\"args\":[\"farmer1\", \"farm1\", \"address1\", \"coordinates1\", \"cropName1\", \"cropType\",\"season\",\"cropState\",\"12365478\",\"bankName\",\"homeAddress\"]\n}"
+				},
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchUserByType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2?peer=peer1.org1.example.com&fcn=fetchUserByType&args=[\"Farmer\"]",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					],
+					"query": [
+						{
+							"key": "peer",
+							"value": "peer1.org1.example.com"
+						},
+						{
+							"key": "fcn",
+							"value": "fetchUserByType"
+						},
+						{
+							"key": "args",
+							"value": "[\"Farmer\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchFarmsByUserId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUwNjMxNjIsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NzUwMjcxNjJ9.-NCwT9GM-DlW6Cn7fDVdIyWGGyaUDoH6cJ_HALwMVNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://testzn62n.eastus.cloudapp.azure.com:4000/channels/mychannel/chaincodes/usercc2?peer=peer1.org1.example.com&fcn=fetchFarmsByUserId&args=[\"farmer1\"]",
+					"protocol": "http",
+					"host": [
+						"testzn62n",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "4000",
+					"path": [
+						"channels",
+						"mychannel",
+						"chaincodes",
+						"usercc2"
+					],
+					"query": [
+						{
+							"key": "peer",
+							"value": "peer1.org1.example.com"
+						},
+						{
+							"key": "fcn",
+							"value": "fetchFarmsByUserId"
+						},
+						{
+							"key": "args",
+							"value": "[\"farmer1\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
