@@ -27,4 +27,29 @@ export class DashboardService {
     console.log("inside error",error);
     return error;
     }
+
+
+    fetchInsuranceByFarmerId(id){
+      const httpOptions = {
+        headers: new HttpHeaders({
+        'Content-Type': 'Application/json; charset=UTF-8',
+    
+        
+        }),
+        };
+  
+      let data= {peer:"peer1.org2.example.com",fcn:"fetchInsuranceByFarmerId", args:JSON.stringify([id])};
+      console.log(data);
+      
+     
+      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/insuranceCC',
+      {params:data})
+      .pipe(map(res => {
+        console.log(res); 
+        
+        return res;
+    }),
+  tap(event=>{},this.handleErrorObservable)
+  );
+    }
 }

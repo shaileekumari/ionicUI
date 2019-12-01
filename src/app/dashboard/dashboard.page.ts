@@ -24,11 +24,25 @@ export class DashboardPage implements OnInit {
     this.display=false;
    }
    display: boolean = false;
-
+   user_details;
 
   ngOnInit() {
     // this.dashboardService.getPolicyDetails();
     this.serviceCall();
+    this.user_details=JSON.parse(sessionStorage.getItem("userData"));
+   
+    let farmerId="farmer"+this.user_details.phoneNo;
+    this.dashboardService.fetchInsuranceByFarmerId(farmerId).subscribe(
+      res=>{
+        console.log(res);
+        
+      },err=>{
+        console.log(err);
+        
+      }
+    )
+
+    
   }
   serviceCall(){
     console.log("inside service");

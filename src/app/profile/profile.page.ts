@@ -12,6 +12,7 @@ export class ProfilePage implements OnInit {
   editProfile:boolean=false;
   visibleSidebar2;
   userBlockData;
+  showFetch:boolean=false;
   constructor(private ps:ProfileService) { 
     this.currentColor = 'light';
     this.editProfile=false;
@@ -148,7 +149,7 @@ export class ProfilePage implements OnInit {
       res=>{
         console.log(res);
         this.userBlockData=res;
-
+        this.showFetch=true;
         
       },
       err=>{

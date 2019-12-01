@@ -39,6 +39,7 @@ export class InsurerPage implements OnInit {
 
   ngOnInit() {
     this.getInsuranceClaims();
+    this.saveUserBlockainData();
   }
  getInsuranceClaims(){
   console.log("Inside Dashboard");
@@ -93,5 +94,60 @@ acceptClaim(){
 logout(){
   this.as.logout();
   window.location.replace('/')
+}
+
+saveUserBlockainData(){
+  let userString=sessionStorage.getItem("userData");
+  let userD=JSON.parse(userString);
+  console.log(userD);
+  
+  this.ins.saveUserBlockainData(userD)
+  .subscribe(
+    res=>{
+      console.log(res);
+      if(res.success==true){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success...',
+          text: 'Insurer Account has been Registerd successfully in Blockchain',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }else{
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Already Registered',
+          text: res.message,
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+    },
+    err=>{
+      console.log(err);
+      
+    }
+  )
+}
+
+
+fetchUserDataByUserID(){
+  let userString=sessionStorage.getItem("userData");
+  let userD=JSON.parse(userString);
+  console.log(userD);
+  this.ins.fetchUserDataByUserID("insurer"+userD.phoneNo)
+  .subscribe(
+    res=>{
+      console.log(res);
+
+      
+    },
+    err=>{
+      console.log(err);
+      
+    }
+  )
 }
 }

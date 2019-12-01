@@ -54,62 +54,88 @@
                         <ion-label class='font' position="stacked">Email</ion-label>
                         <ion-input value="{{userData.email}}" readonly align='end'></ion-input>
                       </ion-item>
-                    <ion-item>
-                      <ion-label class='font' position="stacked">Address</ion-label>
-                      <ion-input value="{{userData.address}}" readonly align='end'></ion-input>
-                    </ion-item>
+
                    <br>
-                   <div align='center' style="margin: 5px;
-                   font-size: 21px;
-                   font-weight: 500;
-                   border-bottom: 2px solid #d6d3d3;
-                   background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.farms.length!=0">
-                       <ion-label class='font'>Farm Details</ion-label>
-                     </div> 
-                   <div *ngFor='let eachfarm of userData.farms'>
+                   <div *ngIf="showFetch">
+                    <div align='center' style="margin: 5px;
+                    font-size: 21px;
+                    font-weight: 500;
+                    border-bottom: 2px solid #d6d3d3;
+                    background: linear-gradient(#2c75a0a3, #e2e2def5);">
+                        <ion-label class='font'>Farm Details</ion-label>
+                      </div> 
+
                       <ion-item>
-                          <ion-label class='font' position="stacked">Farm Id</ion-label>
-                          <ion-input value="{{eachfarm.farm_id}}" readonly align='end'></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label class='font' position="stacked">Farm Address</ion-label>
-                            <ion-input value="{{eachfarm.address}}" readonly align='end'></ion-input>
-                          </ion-item>
-                          <ion-item>
-                              <ion-label class='font' position="stacked">Farm Coordinates</ion-label>
-                              <ion-input  readonly align='end'>
-                                <div *ngIf="eachfarm.coordinates.length==2">
-                                    {{eachfarm.coordinates[0]}} &nbsp;&nbsp; {{eachfarm.coordinates[1]}}
-                                </div></ion-input>
-                            </ion-item>
-                   </div>
-                   <div align='center' style="margin: 5px;
-                   font-size: 21px;
-                   font-weight: 500;
-                   border-bottom: 2px solid #d6d3d3;
-                   background: linear-gradient(#2c75a0a3, #e2e2def5);" *ngIf="userData.account_details.length!=0">
-                       <ion-label class='font'>Account Details</ion-label>
-                     </div> 
-                   <div *ngFor='let eachAccount of userData.account_details'>
-                      <ion-item>
-                          <ion-label class='font' position="stacked">Bank Name</ion-label>
-                          <ion-input value="{{eachAccount.bank_name}}" readonly align='end'></ion-input>
-                        </ion-item>
-                    <ion-item>
-                        <ion-label class='font' position="stacked">Account Number</ion-label>
-                        <ion-input value="{{eachAccount.account_number}}" readonly align='end'></ion-input>
+                        <ion-label class='font' position="stacked">Home Address</ion-label>
+                        <ion-input value="{{userBlockData.homeAddress}}" readonly align='end'></ion-input>
                       </ion-item>
-                      <ion-item>
-                          <ion-label class='font' position="stacked">Account Balance</ion-label>
-                          <ion-input value="{{eachAccount.balance}}" readonly align='end'></ion-input>
-                        </ion-item>
+                    <div *ngFor='let eachfarm of userBlockData.farms'>
+                       <ion-item>
+                           <ion-label class='font' position="stacked">Farm Id</ion-label>
+                           <ion-input value="{{eachfarm.farmID}}" readonly align='end'></ion-input>
+                         </ion-item>
+                         <ion-item>
+                             <ion-label class='font' position="stacked">Farm Address</ion-label>
+                             <ion-input value="{{eachfarm.address}}" readonly align='end'></ion-input>
+                           </ion-item>
+                           <ion-item>
+                               <ion-label class='font' position="stacked">Farm Coordinates</ion-label>
+                               <ion-input value="{{eachfarm.coordinates}}"  readonly align='end'>
+                                </ion-input>
+                             </ion-item>
+                             <div>
+                              <div *ngFor='let crop of eachfarm.cropDetails'>
+                                <ion-item>
+                                  <ion-label class='font' position="stacked">Crop Name</ion-label>
+                                  <ion-input value="{{crop.cropName}}" readonly align='end'></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label class='font' position="stacked">Crop State</ion-label>
+                                    <ion-input value="{{crop.cropState}}" readonly align='end'></ion-input>
+                                  </ion-item>
+                                  <ion-item>
+                                      <ion-label class='font' position="stacked">Crop Type</ion-label>
+                                      <ion-input value="{{crop.cropType}}"  readonly align='end'>
+                                       </ion-input>
+                                    </ion-item>
+                                    <ion-item>
+                                      <ion-label class='font' position="stacked">Crop Season</ion-label>
+                                      <ion-input value="{{crop.season}}"  readonly align='end'>
+                                       </ion-input>
+                                    </ion-item>
+                               </div>
+                             </div>
 
-                
-                   
-                   <br>
+                    </div>
+                    <div align='center' style="margin: 5px;
+                    font-size: 21px;
+                    font-weight: 500;
+                    border-bottom: 2px solid #d6d3d3;
+                    background: linear-gradient(#2c75a0a3, #e2e2def5);">
+                        <ion-label class='font'>Account Details</ion-label>
+                      </div> 
+                    <div *ngFor='let eachAccount of userBlockData.accountDetails'>
+                       <ion-item>
+                           <ion-label class='font' position="stacked">Bank Name</ion-label>
+                           <ion-input value="{{eachAccount.bankName}}" readonly align='end'></ion-input>
+                         </ion-item>
+                     <ion-item>
+                         <ion-label class='font' position="stacked">Account Number</ion-label>
+                         <ion-input value="{{eachAccount.accountNumber}}" readonly align='end'></ion-input>
+                       </ion-item>
+                       <ion-item>
+                           <ion-label class='font' position="stacked">Account Balance</ion-label>
+                           <ion-input value="{{eachAccount.balance}}" readonly align='end'></ion-input>
+                         </ion-item>
+ 
+                 
+                    
+                    <br>
+ 
+ 
+               </div>
+                   </div>
 
-
-              </div>
               </div>
 
 
