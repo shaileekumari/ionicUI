@@ -2,7 +2,19 @@
   <ion-toolbar [color]="currentColor">
     <ion-title >Farmer Profile</ion-title>
     <ion-buttons slot="primary">
-      <ion-button (click)="updateProfile()">Update Profile</ion-button>
+
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item>Welcome {{userData.firstName}} !</button>
+            <button mat-menu-item (click)='saveUserBlockainData()'>Register to Blockchain</button>
+            <button mat-menu-item (click)="updateProfile()">Update Profile</button>
+            <button mat-menu-item (click)="fetchUserDataByUserID()">Fetch</button>
+            
+          </mat-menu>
+          
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>list</mat-icon>
+          </button>
+      
     </ion-buttons>
   </ion-toolbar>
 
@@ -28,15 +40,15 @@
                     </ion-item>
                     <ion-item>
                         <ion-label class='font' position="stacked">User Id</ion-label>
-                        <ion-input value="{{userData.user_id}}" readonly align='end'></ion-input>
+                        <ion-input value="{{userData.id}}" readonly align='end'></ion-input>
                       </ion-item>
                     <ion-item>
                       <ion-label class='font' position="stacked">Role</ion-label>
-                      <ion-input value="{{userData.user_type}}" readonly align='end'></ion-input>
+                      <ion-input value="{{userData.role}}" readonly align='end'></ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label class='font' position="stacked">Phone No.</ion-label>
-                      <ion-input value="{{userData.phone}}" readonly align='end'></ion-input>
+                      <ion-input value="{{userData.phoneNo}}" readonly align='end'></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label class='font' position="stacked">Email</ion-label>
@@ -115,17 +127,21 @@
               <ion-row color="primary" class="ion-justify-content-center">
                 <ion-col class="ion-align-self-center border" size-md="6" size-lg="5" size-xs="12">
                   <br>
-          <div align='center' style="margin: 5px;
-          font-size: 21px;
-          font-weight: 500;
-          border-bottom: 2px solid #d6d3d3;
-          background: linear-gradient(#2c75a0a3, #e2e2def5);">
-              <ion-label class='font'>Farm Details</ion-label>
-            </div>  
-          <form #farmform="ngForm" (ngSubmit)="updatefarm(farmform)">
            
+          <form #farmform="ngForm" (ngSubmit)="updatefarm(farmform)">
+              <div align='center' style="margin: 5px;
+              font-size: 21px;
+              font-weight: 500;
+              border-bottom: 2px solid #d6d3d3;
+              background: linear-gradient(#2c75a0a3, #e2e2def5);">
+                  <ion-label class='font'>Farm Details</ion-label>
+                </div>
                 
-                  
+                <ion-item>
+               
+                    <ion-label class='font' position="stacked">Home Address</ion-label>
+                     <ion-input name="homeAddress" type="text"  ngModel required></ion-input>
+                   </ion-item>
             <ion-item>
                
              <ion-label class='font' position="stacked">Farm Address</ion-label>
@@ -134,32 +150,68 @@
             <br>
             <ion-item>
                
+                <ion-label class='font' position="stacked">Farm Coordinates</ion-label>
+                 <ion-input name="coordinates" type="text"  ngModel required></ion-input>
+               </ion-item>
+            
+
+            <ion-item>
+               
                 <ion-label class='font' position="stacked">Crop Name</ion-label>
-                 <ion-input name="crop" type="text"  ngModel required></ion-input>
+                 <ion-input name="cropName" type="text"  ngModel required></ion-input>
                </ion-item>
                <br>
         
                <ion-item>
                
                   <ion-label class='font' position="stacked">Crop Type</ion-label>
-                   <ion-input name="cropType" type="text"  ngModel required></ion-input>
-                 </ion-item>
+                  <ion-select ngModel name="cropType" required>
+                      <ion-select-option *ngFor="let type of cropTypeList" [value]="type">{{type}}</ion-select-option>
+                        </ion-select>
+                   </ion-item>
                  <br>
 
                  <ion-item>
                
                   <ion-label class='font' position="stacked">Crop Season</ion-label>
-                   <ion-input name="cropSeason" type="text"  ngModel required></ion-input>
-                 </ion-item>
+                  <ion-select ngModel name="cropSeason" required>
+                      <ion-select-option  value="kharif">Kharif</ion-select-option>
+                      <ion-select-option  value="rabi">Rabi</ion-select-option>
+                      <ion-select-option  value="zaid">Zaid</ion-select-option>
+                         
+                  </ion-select>
+                   </ion-item>
                  <br>
 
                  <ion-item>
                
                   <ion-label class='font' position="stacked">Crop State</ion-label>
+                  
                    <ion-input name="cropState" type="text"  ngModel required></ion-input>
                  </ion-item>
                  <br>
 
+                 <div align="center" style="margin: 5px;
+                 font-size: 21px;
+                 font-weight: 500;
+                 border-bottom: 2px solid #d6d3d3;
+                 background: linear-gradient(#2c75a0a3, #e2e2def5);">
+                     <ion-label class='font'>Account Details </ion-label>
+                 </div>
+
+                 <ion-item>
+                    <ion-label class='font' position="stacked">Bank Name</ion-label>
+                    <ion-input name="bankName" type="text" ngModel required></ion-input>
+                 
+                  
+                </ion-item>
+                <ion-item>
+                  
+                    <ion-label class='font' position="stacked">Account Number</ion-label>
+                    <ion-input name="accountNo" type="number"  ngModel required></ion-input>
+                   
+                    
+                  </ion-item>
 
         
               
@@ -179,53 +231,9 @@
             
         
         </form>
-        <div align="center" style="margin: 5px;
-        font-size: 21px;
-        font-weight: 500;
-        border-bottom: 2px solid #d6d3d3;
-        background: linear-gradient(#2c75a0a3, #e2e2def5);">
-            <ion-label class='font'>Account Details </ion-label>
-        </div>
+       
         
-          <form #form="ngForm" (ngSubmit)="updateAccount(form)">
-           
-                
-                 
-              
-                
-              
-              <ion-item>
-                  <ion-label class='font' position="stacked">Bank Name</ion-label>
-                  <ion-input name="bank_name" type="text" ngModel required></ion-input>
-               
-                
-              </ion-item>
-              <ion-item>
-                
-                  <ion-label class='font' position="stacked">Account Number</ion-label>
-                  <ion-input name="account_number" type="text"  ngModel required></ion-input>
-                 
-                  
-                </ion-item>
 
-              <br>
-             
-           
-         
-              <div>
-                <ion-toolbar>
-                    <ion-buttons slot="primary">
-                        <ion-button size="large" type="submit" [disabled]="form.invalid">Update</ion-button>
-             
-                        <ion-button (click)="editProfile=false">Close</ion-button>
-                      </ion-buttons>
-                </ion-toolbar>
-                 
-                  
-              </div>
-              
-    
-    </form>
     </ion-col>
     </ion-row>
     </ion-grid>

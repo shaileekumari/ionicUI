@@ -8,14 +8,15 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
 import { TranslateModule } from '@ngx-translate/core';
-
+import {MaterialModule} from '../material.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild([{ path: '', component: ProfilePage }]),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    MaterialModule
     
   ],
   declarations: [ProfilePage]

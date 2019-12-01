@@ -67,7 +67,12 @@ export class ProfileService {
         };
         let id=[];
         id[0]=userId;
-      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/usercc2',{params:{'peer':"peer1.org1.example.com",'fcn':"fetchUserDataByUserID", 'args':'['+userId+']'}} )
+      let data= {peer:"peer1.org1.example.com",fcn:"fetchUserDataByUserID", args:JSON.stringify([userId])};
+      console.log(data);
+      
+     
+      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/usercc2',
+      {params:data})
       .pipe(map(res => {
         console.log(res); 
         
@@ -77,5 +82,33 @@ export class ProfileService {
 );
     }
 
+
+    updateUser(data){
+      const httpOptions = {
+        headers: new HttpHeaders({
+        'Content-Type': 'Application/json; charset=UTF-8',
+    
+        
+        }),
+        };
+    
+        let body={
+        fcn:"updateProfile",
+        args:[data.id,data.farmId,data.farmAddress,
+          data.coordinates,data.cropName,data.cropType,
+          data.cropSeason,data.cropState,
+          data.accountNo+"",
+          data.bankName,data.homeAddress]
+        }
+
+        return this.http.post<any>(conf.URL+'channels/mychannel/chaincodes/usercc2',body,httpOptions )
+        .pipe(map(res => {
+            console.log(res); 
+            
+            return res;
+        }),
+      tap(event=>{},this.handleErrorObservable)
+    );
+    }
 
 }

@@ -11,6 +11,7 @@ export class ProfilePage implements OnInit {
   private currentColor: string
   editProfile:boolean=false;
   visibleSidebar2;
+  userBlockData;
   constructor(private ps:ProfileService) { 
     this.currentColor = 'light';
     this.editProfile=false;
@@ -38,28 +39,28 @@ export class ProfilePage implements OnInit {
     }]
   }
 
- 
+  user_details;
+  cropTypeList=["food","fiber","feed","oil","ornamental","industrial"]
  
   ngOnInit() {
 
-
-    this.saveUserBlockainData();
-  this.userProfile();
+    this.user_details=JSON.parse(sessionStorage.getItem("userData"));
+    console.log(this.user_details);
+    
+    this.userData=this.user_details;
+    this.userData['fullname']=this.userData['firstName']+" "+this.userData['lastName'];
+    this.userData['farms']=[];
+    this.userData['account_details']=[];
+    if(this.userData['email']==""){
+      this.userData['email']="--";
+    }
+    if(this.userData['address']==""){
+      this.userData['address']="--";
+    }
   this.editProfile=false;
   }
 
-  userProfile(){
-    this.ps.getUserById()
-    .subscribe(
-      res=>{
-        console.log(res);
-        this.userData=res;
-        
-      },err=>{
 
-      }
-    )
-  }
   updateProfile(){
     this.fetchUserDataByUserID()
     this.editProfile=true;
@@ -67,30 +68,40 @@ export class ProfilePage implements OnInit {
 
   updatefarm(form){
   console.log(form.value);
-  this.editProfile=false;
-  Swal.fire({
-    position: 'center',
-    icon: 'warning',
-    title: 'Success...',
-    text: 'Farmer Data has been updated successfully',
-    showConfirmButton: false,
-    timer: 2000
-  })
+  form.value.id="farmer"+this.userData['phoneNo'];
+  form.value.farmId="farm"+this.userData['phoneNo'];
+  this.ps.updateUser(form.value)
+  .subscribe(
+    res=>{
+      console.log(res);
+      this.editProfile=false;
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Success...',
+        text: 'Farmer Data has been updated successfully',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      
+    },err=>{
+      this.editProfile=false;
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error...',
+        text: 'Something Went Wrong',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      console.log(err);
+      
+    }
+  )
+
     
   }
-  updateAccount(form){
-    console.log(form.value);
-    this.editProfile=false;
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Success...',
-      text: 'Farmer Account has been added successfully',
-      showConfirmButton: false,
-      timer: 2000
-    })
-      
-  }
+
 
   saveUserBlockainData(){
     let userString=sessionStorage.getItem("userData");
@@ -114,7 +125,7 @@ export class ProfilePage implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'Error...',
+            title: 'Already Registered',
             text: res.message,
             showConfirmButton: false,
             timer: 2000
@@ -136,6 +147,8 @@ export class ProfilePage implements OnInit {
     .subscribe(
       res=>{
         console.log(res);
+        this.userBlockData=res;
+
         
       },
       err=>{
