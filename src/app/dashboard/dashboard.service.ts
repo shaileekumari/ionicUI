@@ -38,11 +38,11 @@ export class DashboardService {
         }),
         };
   
-      let data= {peer:"peer1.org2.example.com",fcn:"fetchInsuranceByFarmerId", args:JSON.stringify([id])};
+      let data= {peer:"peer1.org1.example.com",fcn:"fetchInsuranceByFarmerId", args:JSON.stringify([id])};
       console.log(data);
       
      
-      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/insuranceCC',
+      return this.http.get<any>(conf.URL+'channels/mychannel/chaincodes/insuranceCC2',
       {params:data})
       .pipe(map(res => {
         console.log(res); 

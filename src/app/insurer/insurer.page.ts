@@ -11,8 +11,11 @@ import { AuthService } from '../auth/auth.service';
 })
 export class InsurerPage implements OnInit {
 
+
+  user_details;
   display:boolean=false;
   editProfile:boolean=false;
+  showUser;
   userData={
     "user_id":"",
     "user_type":"",
@@ -25,28 +28,39 @@ export class InsurerPage implements OnInit {
 
     }]
   }
-
-  each_policy={
-    "policy_id":"","farmer_id":"","status":"","start_date":"","expiry_dates":"",
-    "amount_insured":"","farm_data":{"address":"","geo_coordinates":{"longitude":"","latitude":""}},
-    "crop_data":{"Crop_name":"","Crop_type":"","Crop_season":""}};
-  policy_details=[{
-    "policy_id":"","farmer_id":"","status":"","start_date":"","expiry_dates":"",
-    "amount_insured":"","farm_data":{"address":"","geo_coordinates":{"longitude":"","latitude":""}},
-    "crop_data":{"Crop_name":"","Crop_type":"","Crop_season":""}}]
+  showUpdate:boolean=false;
+  each_policy;
+  policy_details;
     policydata;
   constructor(private ins:InsurerService, private as:AuthService) { }
 
   ngOnInit() {
+    this.each_policy={
+      "amount_insured":"","policy_status":"","start_date":"","expiry_dates":"",
+      "farm_id":"","farmer_id":"","insurer_id":"","policy_id":"",
+      "claim":[{"claimId": "","claimStatus": "","claimedAmount": 0,"createdOn": "","processedOn": "",}]
+      };
+  this.policy_details=[{
+      "Key":"",
+      "Record":{
+      "amount_insured":"","policy_status":"","start_date":"","expiry_dates":"",
+      "farm_id":"","farmer_id":"","insurer_id":"","policy_id":"",
+      "claim":[{"claimId": "","claimStatus": "","claimedAmount": 0,"createdOn": "","processedOn": "",}]
+      }}];
+    this.user_details=JSON.parse(sessionStorage.getItem("userData"));
     this.getInsuranceClaims();
-    this.saveUserBlockainData();
+    // this.saveUserBlockainData();
   }
  getInsuranceClaims(){
+  
+ 
   console.log("Inside Dashboard");
   this.display = false;
-  this.ins.getInsuranceClaims().subscribe(
+  this.ins.fetchAllInsurance("insurer"+this.user_details.phoneNo).subscribe(
     res=>{
-      this.policydata=res;
+      this.policy_details=res;
+      console.log(this.policy_details);
+      
     },
     err=>{
 
@@ -55,8 +69,9 @@ export class InsurerPage implements OnInit {
  }
  openCard(policy){
   console.log(policy);
+  this.each_policy=policy.Record;
   this.display = true;
-  this.each_policy=policy;
+  
 }
 seletedTabClick(a){
   console.log(a);
@@ -69,15 +84,19 @@ seletedTabClick(a){
   
 }
 profile(){
+  this.user_details=JSON.parse(sessionStorage.getItem("userData"));
+  console.log(this.user_details);
+  this.userData=this.user_details;
+  this.userData['fullName']=this.user_details['firstName']+" "+this.user_details['lastName'];
   this.editProfile=false;
-  this.ins.getInsurerProfile().subscribe(
-    res=>{
-      this.userData=res;
-    },
-    err=>{
+  // this.ins.getInsurerProfile().subscribe(
+  //   res=>{
+  //     this.userData=res;
+  //   },
+  //   err=>{
       
-    }
-  )
+  //   }
+  // )
 }
 acceptClaim(){
   Swal.fire({
@@ -141,10 +160,61 @@ fetchUserDataByUserID(){
   .subscribe(
     res=>{
       console.log(res);
-
+      this.showUser=res;
+      this.showUpdate=!this.showUpdate;
+      
       
     },
     err=>{
+      console.log(err);
+      
+    }
+  )
+}
+
+update(form){
+  console.log(form.value);
+  form.value.id="insurer"+this.user_details['phoneNo'];
+  this.ins.updateInsurer(form.value).subscribe(
+    res=>{
+      console.log(res);
+      this.editProfile=false;
+    },
+    err=>{
+      console.log(err);
+      
+    }
+  )
+}
+
+updatePolicy(id,status){
+  console.log(id,status);
+  
+  this.ins.updatePolicy(id,status).subscribe(
+    res=>{
+      console.log(res);
+      if(res.success){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success...',
+          text: 'Insurance Claim Request has been Updated successfully',
+          showConfirmButton: false,
+          timer: 2000
+        })
+        this.display=false;
+      }
+      
+    },err=>{
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error...',
+        text: 'Something Went Wrong',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      
       console.log(err);
       
     }

@@ -8,12 +8,12 @@
  
    
 <div *ngIf="!display">
-    <ion-card *ngFor="let policy of policydata" (click)='openCard(policy)'>
+    <ion-card *ngFor="let policy of policy_details" (click)='openCard(policy)'>
         <ion-card-header>
   
                 <ion-row>
-                  <ion-col size-md="6"> <ion-card-subtitle color='dark' >Policy Id: {{policy.policy_id}}</ion-card-subtitle></ion-col>
-                  <ion-col size-md="6"  text-right> <ion-card-subtitle color='dark' >Status: {{policy.status}}</ion-card-subtitle></ion-col>
+                  <ion-col size-md="6"> <ion-card-subtitle color='dark' >Policy Id: {{policy.Key}}</ion-card-subtitle></ion-col>
+                  <ion-col size-md="6"  text-right> <ion-card-subtitle color='dark' >Status: {{policy.Record['policy_status']}}</ion-card-subtitle></ion-col>
                   </ion-row>
   
   
@@ -25,8 +25,8 @@
       <ion-card-content>
         
               <ion-row>
-                <ion-col size-md="7">Start date: {{policy.start_date}}</ion-col>
-                <ion-col size-md="5" text-right>End date: {{policy.expiry_dates}}</ion-col>
+                <ion-col size-md="7">Start date: {{policy.Record.start_date}}</ion-col>
+                <ion-col size-md="5" text-right>End date: {{policy.Record.expiry_date}}</ion-col>
   
                 </ion-row>
                
@@ -67,7 +67,7 @@
     <ion-col size-md="4" size-xs="12" >
         <ion-item>
             <ion-label class='font' position="stacked">Status</ion-label>
-            <ion-input readOnly>{{each_policy.status}}</ion-input>
+            <ion-input readOnly>{{each_policy.policy_status}}</ion-input>
           </ion-item>
     </ion-col>
     <ion-col size-md="4" size-xs="12">
@@ -85,7 +85,7 @@
     <ion-col size-md="4" size-xs="12">
         <ion-item>
             <ion-label class='font' position="stacked">End Date</ion-label>
-            <ion-input readOnly>{{each_policy.expiry_dates}}</ion-input>
+            <ion-input readOnly>{{each_policy.expiry_date}}</ion-input>
           </ion-item>
     </ion-col>
     
@@ -109,42 +109,91 @@
                 <ion-input readOnly>{{each_policy.farmer_id}}</ion-input>
               </ion-item>
         </ion-col>
-      <ion-col size-md="4" size-xs="12" >
+        <ion-col size-md="4" size-xs="12">
+                <ion-item>
+                    <ion-label class='font' position="stacked">Farm Id</ion-label>
+                    <ion-input readOnly>{{each_policy.farm_id}}</ion-input>
+                  </ion-item>
+            </ion-col>
+            <ion-col size-md="4" size-xs="12">
+                    <ion-item>
+                        <ion-label class='font' position="stacked">Insurer Id</ion-label>
+                        <ion-input readOnly>{{each_policy.insurer_id}}</ion-input>
+                      </ion-item>
+                </ion-col>
+                <ion-col size-md="4" size-xs="12">
+                <div *ngFor='let claim of each_policy.claim'>
+
+                        <ion-col size-md="4" size-xs="12" >
+                                <ion-item>
+                                    <ion-label class='font' position="stacked">Claim Id</ion-label>
+                                    <ion-input readOnly>{{claim.claimId}}</ion-input>
+                                </ion-item>
+                            </ion-col>
+                <ion-col size-md="4" size-xs="12" >
+                    <ion-item>
+                        <ion-label class='font' position="stacked">Claim Status</ion-label>
+                        <ion-input readOnly>{{claim.claimStatus}}</ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size-md="4" size-xs="12" >
+                        <ion-item>
+                            <ion-label class='font' position="stacked">Claim Amount</ion-label>
+                            <ion-input readOnly>{{claim.claimedAmount}}</ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size-md="4" size-xs="12" >
+                            <ion-item>
+                                <ion-label class='font' position="stacked">Created On</ion-label>
+                                <ion-input readOnly>{{claim.createdOn}}</ion-input>
+                            </ion-item>
+                        </ion-col>
+
+                        <ion-col size-md="4" size-xs="12" >
+                                <ion-item>
+                                    <ion-label class='font' position="stacked">Processed On</ion-label>
+                                    <ion-input readOnly>{{claim.processedOn}}</ion-input>
+                                </ion-item>
+                            </ion-col>
+                </div>
+                </ion-col>
+      <!-- <ion-col size-md="4" size-xs="12" >
           <ion-item>
               <ion-label class='font' position="stacked">Address</ion-label>
               <ion-input readOnly>{{each_policy.farm_data.address}}</ion-input>
             </ion-item>
-      </ion-col>
-      <ion-col size-md="4" size-xs="12">
+      </ion-col> -->
+      <!-- <ion-col size-md="4" size-xs="12">
           <ion-item>
               <ion-label class='font' position="stacked">Latitude</ion-label>
               <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.latitude}}</ion-input>
             </ion-item>
-      </ion-col>
-      <ion-col size-md="4" size-xs="12">
+      </ion-col> -->
+      <!-- <ion-col size-md="4" size-xs="12">
           <ion-item>
               <ion-label class='font' position="stacked">Longitude</ion-label>
               <ion-input readOnly>{{each_policy.farm_data.geo_coordinates.longitude}}</ion-input>
             </ion-item>
-      </ion-col>
-      <ion-col size-md="4" size-xs="12" >
+      </ion-col> -->
+      <!-- <ion-col size-md="4" size-xs="12" >
           <ion-item>
               <ion-label class='font' position="stacked">Crop</ion-label>
               <ion-input readOnly>{{each_policy.crop_data.Crop_name}}</ion-input>
             </ion-item>
-      </ion-col>
-      <ion-col size-md="4" size-xs="12">
+      </ion-col> -->
+      <!-- <ion-col size-md="4" size-xs="12">
           <ion-item>
               <ion-label class='font' position="stacked">Crop Type</ion-label>
               <ion-input readOnly>{{each_policy.crop_data.Crop_type}}</ion-input>
             </ion-item>
-      </ion-col>
-      <ion-col size-md="4" size-xs="12">
+      </ion-col> -->
+      <!-- <ion-col size-md="4" size-xs="12">
           <ion-item>
               <ion-label class='font' position="stacked">Crop Season</ion-label>
               <ion-input readOnly>{{each_policy.crop_data.Crop_season}}</ion-input>
             </ion-item>
-      </ion-col> 
+      </ion-col>  -->
 
       
     </ion-row>

@@ -71,7 +71,11 @@ export class ProfilePage implements OnInit {
   console.log(form.value);
   form.value.id="farmer"+this.userData['phoneNo'];
   form.value.farmId="farm"+this.userData['phoneNo'];
-  this.ps.updateUser(form.value)
+  this.ps.getCoordinates(form.value.farmAddress).subscribe(
+    data=>{
+      console.log(data);
+      form.value.coordinates=data.coordinates;
+      this.ps.updateUser(form.value)
   .subscribe(
     res=>{
       console.log(res);
@@ -99,6 +103,12 @@ export class ProfilePage implements OnInit {
       
     }
   )
+    },err=>{
+      console.log(err);
+      
+    }
+  )
+  
 
     
   }

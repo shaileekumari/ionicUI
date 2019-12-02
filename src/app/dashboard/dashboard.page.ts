@@ -9,17 +9,24 @@ import { AlertController } from '@ionic/angular';
 })
 export class DashboardPage implements OnInit {
 
-  each_policy={
-    "policy_id":"","farmer_id":"","status":"","start_date":"","expiry_dates":"",
-    "amount_insured":"","farm_data":{"address":"","geo_coordinates":{"longitude":"","latitude":""}},
-    "crop_data":{"Crop_name":"","Crop_type":"","Crop_season":""}};
-  policy_details=[{
-    "policy_id":"","farmer_id":"","status":"","start_date":"","expiry_dates":"",
-    "amount_insured":"","farm_data":{"address":"","geo_coordinates":{"longitude":"","latitude":""}},
-    "crop_data":{"Crop_name":"","Crop_type":"","Crop_season":""}}]
+
     policydata;
+    policy_details;
+    each_policy;
   
   constructor(private dashboardService:DashboardService) {
+    this.each_policy={
+      "amount_insured":"","policy_status":"","start_date":"","expiry_dates":"",
+      "farm_id":"","farmer_id":"","insurer_id":"","policy_id":"",
+      "claim":[{"claimId": "","claimStatus": "","claimedAmount": 0,"createdOn": "","processedOn": "",}]
+      };
+   this.policy_details=[{
+      "Key":"",
+      "Record":{
+      "amount_insured":"","policy_status":"","start_date":"","expiry_dates":"",
+      "farm_id":"","farmer_id":"","insurer_id":"","policy_id":"",
+      "claim":[{"claimId": "","claimStatus": "","claimedAmount": 0,"createdOn": "","processedOn": "",}]
+      }}]
     this.policydata=this.policy_details;
     this.display=false;
    }
@@ -27,14 +34,14 @@ export class DashboardPage implements OnInit {
    user_details;
 
   ngOnInit() {
-    // this.dashboardService.getPolicyDetails();
-    this.serviceCall();
+
     this.user_details=JSON.parse(sessionStorage.getItem("userData"));
    
     let farmerId="farmer"+this.user_details.phoneNo;
     this.dashboardService.fetchInsuranceByFarmerId(farmerId).subscribe(
       res=>{
         console.log(res);
+        this.policy_details=res;
         
       },err=>{
         console.log(err);
@@ -44,24 +51,11 @@ export class DashboardPage implements OnInit {
 
     
   }
-  serviceCall(){
-    console.log("inside service");
-    
-    this.dashboardService.getPolicyDetails()
-    .subscribe(
-      res=>{
-        console.log(res);
-        this.policydata=res;
-        
-      },err=>{
 
-      }
-    )
-  }
   openCard(policy){
     console.log(policy);
     this.display = true;
-    this.each_policy=policy;
+    this.each_policy=policy.Record;
   }
 
 }

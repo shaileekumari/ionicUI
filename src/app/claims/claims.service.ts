@@ -51,7 +51,7 @@ tap(event=>{},this.handleErrorObservable)
           data.amount+""]
         }
 
-        return this.http.post<any>(conf.URL+'channels/mychannel/chaincodes/insuranceCC',body,httpOptions )
+        return this.http.post<any>(conf.URL+'channels/mychannel/chaincodes/insuranceCC2',body,httpOptions )
         .pipe(map(res => {
             console.log(res); 
             

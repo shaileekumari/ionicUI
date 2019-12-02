@@ -111,4 +111,29 @@ export class ProfileService {
     );
     }
 
+    getCoordinates(address){
+    
+        const httpOptions = {
+          headers: new HttpHeaders({
+          'Content-Type': 'Application/json; charset=UTF-8',
+      
+          
+          }),
+          };
+         
+        
+          let body={
+            farmAddress:address
+          }
+          return this.http.post<any>(conf.URL+'getCoordinatesByAddress',body,httpOptions )
+          .pipe(map(res => {
+              console.log(res); 
+              
+              return res;
+          }),
+        tap(event=>{},this.handleErrorObservable)
+      );
+      }
+ 
+
 }

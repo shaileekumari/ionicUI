@@ -7,7 +7,7 @@
             <button mat-menu-item>Welcome {{userData.firstName}} !</button>
             <button mat-menu-item (click)='saveUserBlockainData()'>Register to Blockchain</button>
             <button mat-menu-item (click)="updateProfile()">Update Profile</button>
-            <button mat-menu-item (click)="fetchUserDataByUserID()">Fetch</button>
+            <button mat-menu-item (click)="fetchUserDataByUserID()">Display Blockchain Profile</button>
             
           </mat-menu>
           
@@ -174,11 +174,7 @@
               <ion-input name="farmAddress" type="text"  ngModel required></ion-input>
             </ion-item>
             <br>
-            <ion-item>
-               
-                <ion-label class='font' position="stacked">Farm Coordinates</ion-label>
-                 <ion-input name="coordinates" type="text"  ngModel required></ion-input>
-               </ion-item>
+  
             
 
             <ion-item>
